@@ -1,0 +1,23 @@
+[
+    {
+        "productId": 2,
+        "productName": "Garden Cart",
+        "productCode": "GDN-0023",
+        "releaseDate": "Wed Nov 15 2017 12:22:21 GMT+0530 (India Standard Time)",
+        "description": "15 gallon capacity rolling garden cart",
+        "price": 32.99,
+        "starRating": 4.2,
+        "imageUrl": "https://www.gstatic.com/webp/gallery/1.sm.jpg"
+        
+    },
+    {
+        "productId": 5,
+        "productName": "Hammer",
+        "productCode": "TBX-0048",
+        "releaseDate": "Wed Nov 15 2017 12:22:21 GMT+0530 (India Standard Time)",
+        "description": "Curved claw steel hammer",
+        "price": 8.9,
+        "starRating": 4.8,
+        "imageUrl": "https://www.gstatic.com/webp/gallery/4.sm.webp"
+    }
+]

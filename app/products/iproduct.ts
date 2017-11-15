@@ -2,7 +2,7 @@ export interface IProduct{
     productId :number;
     productName :string;
     productCode :string;
-    releaseDate :Date;
+    releaseDate :String;
     description :string;
     price :number;
     starRating :number;

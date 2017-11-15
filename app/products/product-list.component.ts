@@ -1,6 +1,7 @@
-import{ Component} from '@angular/core';
+import{ Component, OnInit} from '@angular/core';
 import{ IProduct} from './iproduct';
 import { NgModel } from '@angular/forms';
+import {ProductService} from './product.service';
 
 @Component({
     moduleId:module.id,
@@ -8,10 +9,19 @@ import { NgModel } from '@angular/forms';
     templateUrl: `./product-list.component.html`
 })
 
-export class ProductListComponent{
+export class ProductListComponent implements OnInit{
     showImage : boolean = false;
     showImageBtn : string = "Show Image"
     pageTitle: string = 'Product List';
+
+    constructor(private  _productService : ProductService){
+        
+    }
+   
+    errorMsg : String = "";
+
+    products: IProduct[] = [];
+
     toggleImage(){
         this.showImage = !this.showImage;
         this.showImageBtn = this.showImage?"Show Image" : "Hide Image";
@@ -29,10 +39,20 @@ export class ProductListComponent{
     performFiltering (filterBy : string) : IProduct[]{
         filterBy = filterBy.toLocaleLowerCase();
         return this.products.filter(
-            (product :IProduct)=>product.productName.toLocaleLowerCase().indexOf(filterBy)!=-1);
+            (product :IProduct)=>product.productName.toLocaleLowerCase().indexOf(filterBy)!=-1
+        );
     }
     
-    products: IProduct[] =   [
+    ngOnInit() : void {
+        this._productService.getProducts()
+            .subscribe(products => this.products = products,
+                error => this.errorMsg = <any>error);
+    }
+
+    
+
+
+    /*products: IProduct[] =   [
         {
             "productId": 2,
             "productName": "Garden Cart",
@@ -54,6 +74,6 @@ export class ProductListComponent{
             "starRating": 4.8,
             "imageUrl": "https://www.gstatic.com/webp/gallery/4.sm.webp"
         }
-    ];
+    ];*/
     filterdProduct : IProduct[] = this.products;
 };
